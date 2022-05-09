@@ -1,8 +1,7 @@
 Build a desktop database application
 
 A program that stores a book information:
-Title, Author
-Year, ISBN
+Title, Author Year, ISBN
 
 User can:
 
@@ -11,4 +10,4 @@ Search an entry
 Add entry
 Update entry
 Delete
-Close
+Clos

@@ -22,6 +22,32 @@ def view():
     conn.close()
     return rows
 
+def search(title="",author="",year="",isbn=""):
+    conn=sqlite3.connect("books.db")
+    cur=conn.cursor()
+    cur.execute("SELECT * FROM book WHERE title=? OR author=? OR year=? OR isbn=?", (title,author,year,isbn))
+    rows=cur.fetchall()
+    conn.close()
+    return rows
+
+def delete(id):
+    conn=sqlite3.connect("books.db")
+    cur=conn.cursor()
+    cur.execute("DELETE FROM book WHERE id=?",(id,))
+    conn.commit()
+    conn.close()
+
+def update(id,title,author,year,isbn):
+    conn=sqlite3.connect("books.db")
+    cur=conn.cursor()
+    cur.execute("UPDATE book SET title=?, author=?, year=?, isbn=? WHERE id=?", (title,author,year,isbn,id))
+    conn.commit()
+    conn.close()
+
+
 connect()
-insert("Wings of Fire","A.P.J Abdul Kalam", 1999, 12345678)
+#insert("aafs","asdfa",2000,1899232)
+#delete(4)
+update(3, "The Theory of Everything", "Stephen Hawking",2002,12345680)
 print(view())
+#print(search(author="A.P.J Abdul Kalam"))

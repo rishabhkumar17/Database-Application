@@ -14,6 +14,8 @@ def search_command():
 
 def add_command():
     backend.insert(title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
+    list1.delete(0,END)
+    list1.insert(END,(title_text.get(),author_text.get(),year_text.get(),isbn_text.get()))
 
 window=Tk()
 
